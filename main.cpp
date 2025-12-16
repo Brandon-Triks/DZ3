@@ -19,12 +19,10 @@ int main() {
             vihod+=m;
             vihod+=' ';
         }
-        else if (m=="(") {
+        else if (m=="(" || is_func(m)) {
             st.push(m);
         }
-        else if (is_func(m)) {
-            st.push(m);
-        }
+
         else if (m==")" && !st.empty()) {
             while (st.top()!="(") {
                 vihod+=st.top();
@@ -40,7 +38,7 @@ int main() {
                     vihod+=' ';
                     st.pop();
                 }
-                if (!st.empty()&&pr_comparing(st.top()[0],m[0])&&st.top()!="(") {
+                if (pr_comparing(st.top()[0],m[0])&&st.top()!="(") {
                     vihod+=st.top();
                     vihod+=' ';
                     st.pop();
